@@ -1,0 +1,512 @@
+/* Dark Theme - A sleek dark theme for the pharmacy management system */
+
+/* Root styles with color variables */
+.root {
+    -fx-font-family: 'Segoe UI', Arial, sans-serif;
+    -fx-font-size: 13px;
+    
+    /* Color palette */
+    -fx-primary: #3F51B5;
+    -fx-primary-light: #7986CB;
+    -fx-primary-dark: #303F9F;
+    -fx-secondary: #009688;
+    -fx-accent: #00BCD4;
+    
+    -fx-background: #121212;
+    -fx-card-background: #1E1E1E;
+    -fx-text: #E0E0E0;
+    -fx-text-secondary: #9E9E9E;
+    
+    -fx-success: #43A047;
+    -fx-warning: #FFB300;
+    -fx-danger: #E53935;
+    
+    background-color: -fx-background;
+}
+
+/* Login page styling */
+.login-container {
+    -fx-background-color: rgba(30, 30, 30, 0.85);
+    -fx-background-radius: 8px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 3);
+    -fx-padding: 30px;
+}
+
+.login-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-primary-light;
+}
+
+.login-subtitle {
+    -fx-font-size: 14px;
+    -fx-text-fill: -fx-text-secondary;
+}
+
+/* Text fields, combo boxes styling */
+.text-field, .password-field, .combo-box {
+    -fx-background-color: #2D2D2D;
+    -fx-background-radius: 4px;
+    -fx-border-color: #424242;
+    -fx-border-radius: 4px;
+    -fx-padding: 8px;
+    -fx-prompt-text-fill: #757575;
+    -fx-text-fill: -fx-text;
+}
+
+.text-field:focused, .password-field:focused, .combo-box:focused {
+    -fx-border-color: -fx-primary-light;
+    -fx-background-color: #333333;
+    -fx-effect: dropshadow(gaussian, rgba(63, 81, 181, 0.2), 5, 0, 0, 0);
+}
+
+.combo-box .arrow-button {
+    -fx-background-color: transparent;
+}
+
+.combo-box .arrow {
+    -fx-background-color: -fx-primary-light;
+}
+
+.combo-box .list-cell {
+    -fx-padding: 6px 8px;
+    -fx-text-fill: -fx-text;
+    -fx-background-color: #2D2D2D;
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: #2D2D2D;
+    -fx-border-color: #424242;
+}
+
+.combo-box-popup .list-cell:hover {
+    -fx-background-color: #3D3D3D;
+}
+
+.combo-box-popup .list-cell:selected {
+    -fx-background-color: -fx-primary-dark;
+    -fx-text-fill: white;
+}
+
+/* Button styling */
+.button {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 4px;
+    -fx-padding: 8px 16px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 3, 0, 0, 1);
+}
+
+.button:hover {
+    -fx-background-color: derive(-fx-primary, 10%);
+}
+
+.button:pressed {
+    -fx-background-color: derive(-fx-primary, -10%);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 2, 0, 0, 0);
+}
+
+.button.secondary {
+    -fx-background-color: -fx-secondary;
+}
+
+.button.secondary:hover {
+    -fx-background-color: derive(-fx-secondary, 10%);
+}
+
+.button.secondary:pressed {
+    -fx-background-color: derive(-fx-secondary, -10%);
+}
+
+.button.danger {
+    -fx-background-color: -fx-danger;
+}
+
+.button.danger:hover {
+    -fx-background-color: derive(-fx-danger, 10%);
+}
+
+.button.danger:pressed {
+    -fx-background-color: derive(-fx-danger, -10%);
+}
+
+.button.success {
+    -fx-background-color: -fx-success;
+}
+
+.button.success:hover {
+    -fx-background-color: derive(-fx-success, 10%);
+}
+
+.button.success:pressed {
+    -fx-background-color: derive(-fx-success, -10%);
+}
+
+/* Dashboard card styling */
+.dashboard-card {
+    -fx-background-color: -fx-card-background;
+    -fx-background-radius: 8px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 8, 0, 0, 2);
+    -fx-padding: 15px;
+}
+
+.card-title {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-text;
+}
+
+.card-value {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-primary-light;
+}
+
+.card-icon {
+    -fx-fill: -fx-primary-light;
+}
+
+/* Table styling */
+.table-view {
+    -fx-background-color: transparent;
+    -fx-border-color: #424242;
+    -fx-border-radius: 4px;
+}
+
+.table-view .column-header,
+.table-view .column-header .filler,
+.table-view .column-header-background .filler {
+    -fx-background-color: #2A2A2A;
+    -fx-border-color: transparent #424242 #424242 transparent;
+    -fx-border-width: 0 1 1 0;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: -fx-text;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 5px;
+    -fx-alignment: center-left;
+}
+
+.table-view .table-row-cell {
+    -fx-background-color: #2D2D2D;
+    -fx-border-color: transparent transparent #3D3D3D transparent;
+}
+
+.table-view .table-row-cell:odd {
+    -fx-background-color: #333333;
+}
+
+.table-view .table-row-cell:selected {
+    -fx-background-color: derive(-fx-primary-dark, -20%);
+    -fx-text-fill: white;
+}
+
+.table-view .table-row-cell:hover {
+    -fx-background-color: #3D3D3D;
+}
+
+.table-view .table-cell {
+    -fx-padding: 8px 5px;
+    -fx-text-fill: -fx-text;
+    -fx-alignment: center-left;
+}
+
+/* Sidebar navigation */
+.sidebar {
+    -fx-background-color: #1A1A1A;
+    -fx-padding: 20px 0;
+}
+
+.sidebar-header {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-primary-light;
+    -fx-padding: 0 15px 20px 15px;
+}
+
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #9FA8DA;
+    -fx-font-size: 14px;
+    -fx-alignment: center-left;
+    -fx-padding: 12px 15px;
+    -fx-border-color: transparent;
+    -fx-background-radius: 0;
+    -fx-cursor: hand;
+}
+
+.nav-button:hover {
+    -fx-background-color: #252525;
+    -fx-text-fill: -fx-primary-light;
+}
+
+.nav-button.active {
+    -fx-background-color: -fx-primary-dark;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.nav-button .icon {
+    -fx-fill: #9FA8DA;
+}
+
+.nav-button:hover .icon {
+    -fx-fill: -fx-primary-light;
+}
+
+.nav-button.active .icon {
+    -fx-fill: white;
+}
+
+/* Form containers and labels */
+.form-container {
+    -fx-spacing: 15px;
+    -fx-padding: 20px;
+}
+
+.form-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-primary-light;
+    -fx-padding: 0 0 10px 0;
+}
+
+.form-label {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-text;
+}
+
+.form-field {
+    -fx-pref-height: 35px;
+}
+
+/* Dialog styling */
+.dialog-pane {
+    -fx-background-color: -fx-card-background;
+}
+
+.dialog-pane .header-panel {
+    -fx-background-color: -fx-primary-dark;
+    -fx-padding: 15px;
+}
+
+.dialog-pane .header-panel .label {
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.dialog-pane .content {
+    -fx-padding: 15px;
+}
+
+.dialog-pane .button-bar {
+    -fx-padding: 15px;
+}
+
+/* Scrollbars */
+.scroll-bar {
+    -fx-background-color: #1A1A1A;
+    -fx-background-radius: 0;
+}
+
+.scroll-bar:vertical .track,
+.scroll-bar:horizontal .track {
+    -fx-background-color: #1A1A1A;
+    -fx-border-color: transparent;
+}
+
+.scroll-bar:vertical .thumb,
+.scroll-bar:horizontal .thumb {
+    -fx-background-color: #4D4D4D;
+    -fx-background-radius: 10px;
+}
+
+.scroll-bar:vertical .thumb:hover,
+.scroll-bar:horizontal .thumb:hover {
+    -fx-background-color: #5D5D5D;
+}
+
+.scroll-bar:vertical .thumb:pressed,
+.scroll-bar:horizontal .thumb:pressed {
+    -fx-background-color: #7D7D7D;
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow {
+    -fx-background-color: #7D7D7D;
+}
+
+/* Tabs styling */
+.tab-pane {
+    -fx-tab-min-width: 120px;
+    -fx-tab-max-width: 120px;
+    -fx-tab-min-height: 40px;
+}
+
+.tab-pane .tab-header-area {
+    -fx-padding: 5px 0 0 0;
+}
+
+.tab-pane .tab {
+    -fx-background-color: #2A2A2A;
+    -fx-background-radius: 4px 4px 0 0;
+    -fx-border-color: transparent;
+}
+
+.tab-pane .tab:selected {
+    -fx-background-color: -fx-primary-dark;
+}
+
+.tab-pane .tab-label {
+    -fx-text-fill: -fx-text-secondary;
+    -fx-font-size: 13px;
+    -fx-font-weight: normal;
+}
+
+.tab-pane .tab:selected .tab-label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.tab-pane .tab-content-area {
+    -fx-background-color: -fx-card-background;
+    -fx-border-color: #424242;
+    -fx-border-width: 1px;
+    -fx-border-radius: 0 4px 4px 4px;
+}
+
+/* Search box styling */
+.search-box {
+    -fx-background-color: #2D2D2D;
+    -fx-background-radius: 20px;
+    -fx-border-color: #424242;
+    -fx-border-radius: 20px;
+    -fx-padding: 8px 12px;
+    -fx-pref-height: 35px;
+    -fx-text-fill: -fx-text;
+}
+
+.search-box:focused {
+    -fx-border-color: -fx-primary-light;
+}
+
+/* Tooltip styling */
+.tooltip {
+    -fx-background-color: #424242;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-padding: 5px 10px;
+    -fx-background-radius: 3px;
+}
+
+/* Section headers */
+.section-header {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-primary-light;
+    -fx-padding: 10px 0;
+}
+
+/* Progress bar styling */
+.progress-bar {
+    -fx-accent: -fx-primary-light;
+}
+
+.progress-bar .track {
+    -fx-background-color: #3D3D3D;
+    -fx-background-radius: 3px;
+}
+
+.progress-bar .bar {
+    -fx-background-radius: 3px;
+}
+
+/* Main content area */
+.main-content {
+    -fx-background-color: -fx-background;
+    -fx-padding: 20px;
+}
+
+/* Alerts and notifications */
+.alert {
+    -fx-background-color: -fx-card-background;
+}
+
+.alert .header-panel {
+    -fx-padding: 15px;
+}
+
+.alert .header-panel .label {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.alert .content .label {
+    -fx-text-fill: -fx-text;
+}
+
+.alert.information .header-panel {
+    -fx-background-color: -fx-primary;
+}
+
+.alert.confirmation .header-panel {
+    -fx-background-color: -fx-primary;
+}
+
+.alert.warning .header-panel {
+    -fx-background-color: -fx-warning;
+}
+
+.alert.error .header-panel {
+    -fx-background-color: -fx-danger;
+}
+
+/* Theme toggle button */
+.theme-toggle {
+    -fx-background-color: transparent;
+    -fx-background-radius: 50%;
+    -fx-min-width: 40px;
+    -fx-min-height: 40px;
+    -fx-max-width: 40px;
+    -fx-max-height: 40px;
+    -fx-padding: 0;
+}
+
+.theme-toggle:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+}
+
+.theme-toggle .icon {
+    -fx-fill: white;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 800px) {
+    .root {
+        -fx-font-size: 12px;
+    }
+    
+    .button {
+        -fx-padding: 6px 12px;
+    }
+    
+    .dashboard-card {
+        -fx-padding: 10px;
+    }
+    
+    .card-value {
+        -fx-font-size: 24px;
+    }
+} 

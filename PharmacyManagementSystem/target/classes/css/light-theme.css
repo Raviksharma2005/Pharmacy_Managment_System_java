@@ -1,0 +1,80 @@
+/* Login page styles */
+.login-background {
+    -fx-background-color: linear-gradient(to bottom right, #c7d9f8, #9ab2e0);
+}
+
+.login-right-panel {
+    -fx-background-color: rgba(255, 255, 255, 0.9);
+    -fx-background-radius: 8;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 0);
+}
+
+/* ComboBox styling for light theme */
+.combo-box {
+    -fx-background-color: white;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+}
+
+.combo-box .list-cell {
+    -fx-text-fill: #333333;
+    -fx-background-color: white;
+}
+
+.combo-box .list-view {
+    -fx-background-color: white;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+}
+
+.combo-box .list-view .list-cell:filled:selected, 
+.combo-box .list-view .list-cell:filled:selected:hover {
+    -fx-background-color: #4B89DC;
+    -fx-text-fill: white;
+}
+
+.combo-box .list-view .list-cell:filled:hover {
+    -fx-background-color: #f2f2f2;
+    -fx-text-fill: #333333;
+}
+
+.combo-box .arrow-button {
+    -fx-background-color: transparent;
+}
+
+.combo-box .arrow {
+    -fx-background-color: #555555;
+}
+
+/* Text field and password field styling */
+.text-field, .password-field {
+    -fx-background-color: white;
+    -fx-text-fill: #333333;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-prompt-text-fill: #999999;
+}
+
+.text-field:focused, .password-field:focused {
+    -fx-border-color: #4B89DC;
+    -fx-border-width: 1px;
+}
+
+/* Button styling */
+.button {
+    -fx-background-color: #4B89DC;
+    -fx-text-fill: white;
+    -fx-background-radius: 4;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #3672c5;
+}
+
+.button:pressed {
+    -fx-background-color: #2a5ca3;
+} 

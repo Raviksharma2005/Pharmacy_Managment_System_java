@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pharmacy.controllers.PharmacistDashboardController">
+    <top>
+        <HBox alignment="CENTER_LEFT" style="-fx-background-color: #2196f3; -fx-padding: 10;">
+            <Label text="Pharmacist Dashboard" style="-fx-font-size: 20; -fx-text-fill: white; -fx-font-weight: bold;"/>
+            <Pane HBox.hgrow="ALWAYS" />
+            <Label fx:id="userLabel" text="Welcome, Pharmacist" style="-fx-font-size: 14; -fx-text-fill: white;"/>
+            <Button text="Logout" onAction="#handleLogout"
+                    style="-fx-background-color: transparent; -fx-text-fill: white; -fx-underline: true;"/>
+        </HBox>
+    </top>
+    
+    <left>
+        <VBox spacing="5" style="-fx-background-color: #263238; -fx-padding: 10;">
+            <Label text="PHARMACY OPERATIONS" style="-fx-font-size: 13; -fx-text-fill: #757575; -fx-font-weight: bold; -fx-padding: 5 0 5 0;"/>
+            <Button fx:id="dashboardBtn" text="Dashboard" prefWidth="170" onAction="#showDashboard"
+                    style="-fx-background-color: #263238; -fx-text-fill: white; -fx-alignment: CENTER_LEFT; -fx-font-size: 14;"/>
+            <Button fx:id="viewProductsBtn" text="View Products" prefWidth="170" onAction="#showProducts"
+                    style="-fx-background-color: #263238; -fx-text-fill: white; -fx-alignment: CENTER_LEFT; -fx-font-size: 14;"/>
+            <Button fx:id="sellMedicinesBtn" text="Sell Medicines" prefWidth="170" onAction="#showSellMedicines"
+                    style="-fx-background-color: #263238; -fx-text-fill: white; -fx-alignment: CENTER_LEFT; -fx-font-size: 14;"/>
+            <Button fx:id="salesHistoryBtn" text="Sales History" prefWidth="170" onAction="#showSalesHistory"
+                    style="-fx-background-color: #263238; -fx-text-fill: white; -fx-alignment: CENTER_LEFT; -fx-font-size: 14;"/>
+            <Button fx:id="manageStockBtn" text="Manage Stock" prefWidth="170" onAction="#showManageStock"
+                    style="-fx-background-color: #263238; -fx-text-fill: white; -fx-alignment: CENTER_LEFT; -fx-font-size: 14;"/>
+        </VBox>
+    </left>
+    
+    <center>
+        <StackPane fx:id="contentArea">
+            <!-- Dashboard Overview -->
+            <VBox fx:id="dashboardPane" spacing="15" style="-fx-background-color: #f4f4f4; -fx-padding: 20;">
+                <Label text="Dashboard Overview" style="-fx-font-size: 22; -fx-font-weight: bold;"/>
+                <HBox spacing="15">
+                    <VBox styleClass="dashboard-card" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 5; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 10);" HBox.hgrow="ALWAYS">
+                        <Label text="Total Products" style="-fx-font-size: 14; -fx-text-fill: #757575;"/>
+                        <Label fx:id="totalProductsLabel" text="0" style="-fx-font-size: 28; -fx-font-weight: bold;"/>
+                    </VBox>
+                    <VBox styleClass="dashboard-card" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 5; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 10);" HBox.hgrow="ALWAYS">
+                        <Label text="Sales Today" style="-fx-font-size: 14; -fx-text-fill: #757575;"/>
+                        <Label fx:id="todaySalesLabel" text="0" style="-fx-font-size: 28; -fx-font-weight: bold;"/>
+                    </VBox>
+                    <VBox styleClass="dashboard-card" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 5; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 10);" HBox.hgrow="ALWAYS">
+                        <Label text="Today's Revenue" style="-fx-font-size: 14; -fx-text-fill: #757575;"/>
+                        <Label fx:id="todayRevenueLabel" text="$0.00" style="-fx-font-size: 28; -fx-font-weight: bold;"/>
+                    </VBox>
+                </HBox>
+                <HBox spacing="15">
+                    <VBox styleClass="dashboard-card" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 5; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 10);" HBox.hgrow="ALWAYS">
+                        <Label text="Low Stock Items" style="-fx-font-size: 14; -fx-text-fill: #757575;"/>
+                        <Label fx:id="lowStockLabel" text="0" style="-fx-font-size: 28; -fx-font-weight: bold;"/>
+                    </VBox>
+                    <VBox styleClass="dashboard-card" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 5; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 10);" HBox.hgrow="ALWAYS">
+                        <Label text="Total Categories" style="-fx-font-size: 14; -fx-text-fill: #757575;"/>
+                        <Label fx:id="totalCategoriesLabel" text="0" style="-fx-font-size: 28; -fx-font-weight: bold;"/>
+                    </VBox>
+                </HBox>
+                <Label text="Recent Sales" style="-fx-font-size: 18; -fx-font-weight: bold; -fx-padding: 10 0 0 0;"/>
+                <TableView fx:id="recentSalesTable" VBox.vgrow="ALWAYS" style="-fx-background-radius: 5; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 10);">
+                    <columns>
+                        <TableColumn text="Invoice #" fx:id="invoiceColumn" prefWidth="100"/>
+                        <TableColumn text="Date" fx:id="dateColumn" prefWidth="150"/>
+                        <TableColumn text="Customer" fx:id="customerColumn" prefWidth="150"/>
+                        <TableColumn text="Amount" fx:id="amountColumn" prefWidth="100"/>
+                        <TableColumn text="Status" fx:id="statusColumn" prefWidth="100"/>
+                    </columns>
+                </TableView>
+            </VBox>
+            
+            <!-- Products View -->
+            <VBox fx:id="productsPane" visible="false" managed="false" spacing="15" style="-fx-background-color: #f4f4f4; -fx-padding: 20;">
+                <HBox alignment="CENTER_LEFT" spacing="10">
+                    <Label text="View Products" style="-fx-font-size: 22; -fx-font-weight: bold;"/>
+                    <Pane HBox.hgrow="ALWAYS" />
+                    <ToggleButton fx:id="showLowStockBtn" text="Show Low Stock" onAction="#toggleLowStock"
+                              style="-fx-background-color: #FF9800; -fx-text-fill: white;"/>
+                </HBox>
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <TextField fx:id="searchProduct" promptText="Search products..." prefWidth="250"/>
+                    <Button text="Search" onAction="#searchProducts"
+                            style="-fx-background-color: #2196f3; -fx-text-fill: white;"/>
+                </HBox>
+                <TableView fx:id="productsTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn text="ID" fx:id="productIdColumn" prefWidth="60"/>
+                        <TableColumn text="Name" fx:id="productNameColumn" prefWidth="150"/>
+                        <TableColumn text="Description" fx:id="productDescColumn" prefWidth="200"/>
+                        <TableColumn text="Price" fx:id="productPriceColumn" prefWidth="100"/>
+                        <TableColumn text="Stock" fx:id="productStockColumn" prefWidth="80"/>
+                        <TableColumn text="Category" fx:id="productCategoryColumn" prefWidth="100"/>
+                        <TableColumn text="Status" fx:id="productStatusColumn" prefWidth="100"/>
+                        <TableColumn text="Action" fx:id="productActionColumn" prefWidth="80"/>
+                    </columns>
+                </TableView>
+            </VBox>
+            
+            <!-- Sell Medicines -->
+            <VBox fx:id="sellMedicinesPane" visible="false" managed="false" spacing="15" style="-fx-background-color: #f4f4f4; -fx-padding: 20;">
+                <HBox alignment="CENTER_LEFT" spacing="10">
+                    <Label text="Sell Medicines" style="-fx-font-size: 22; -fx-font-weight: bold;"/>
+                </HBox>
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <TextField fx:id="searchMedicine" promptText="Search by product name or ID..." prefWidth="300"/>
+                    <Button text="Search" onAction="#searchMedicines"
+                            style="-fx-background-color: #2196f3; -fx-text-fill: white;"/>
+                </HBox>
+                <TableView fx:id="medicinesTable" VBox.vgrow="ALWAYS" prefHeight="200">
+                    <columns>
+                        <TableColumn text="ID" fx:id="medicineIdColumn" prefWidth="60"/>
+                        <TableColumn text="Name" fx:id="medicineNameColumn" prefWidth="150"/>
+                        <TableColumn text="Price" fx:id="medicinePriceColumn" prefWidth="100"/>
+                        <TableColumn text="Available Stock" fx:id="medicineStockColumn" prefWidth="120"/>
+                        <TableColumn text="Category" fx:id="medicineCategoryColumn" prefWidth="120"/>
+                        <TableColumn text="Add to Cart" fx:id="medicineActionColumn" prefWidth="120"/>
+                    </columns>
+                </TableView>
+                
+                <Separator />
+                
+                <HBox alignment="CENTER_LEFT" spacing="10">
+                    <Label text="Current Cart" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
+                    <Pane HBox.hgrow="ALWAYS" />
+                    <Button text="Clear Cart" onAction="#clearCart"
+                            style="-fx-background-color: #f44336; -fx-text-fill: white;"/>
+                </HBox>
+                <TableView fx:id="cartTable" VBox.vgrow="ALWAYS" prefHeight="150">
+                    <columns>
+                        <TableColumn text="Product" fx:id="cartProductColumn" prefWidth="200"/>
+                        <TableColumn text="Quantity" fx:id="cartQuantityColumn" prefWidth="100"/>
+                        <TableColumn text="Price" fx:id="cartPriceColumn" prefWidth="100"/>
+                        <TableColumn text="Total" fx:id="cartTotalColumn" prefWidth="100"/>
+                        <TableColumn text="Remove" fx:id="cartRemoveColumn" prefWidth="80"/>
+                    </columns>
+                </TableView>
+                
+                <HBox spacing="20" alignment="CENTER_RIGHT">
+                    <VBox spacing="5" alignment="CENTER_RIGHT">
+                        <HBox spacing="10" alignment="CENTER_RIGHT">
+                            <Label text="Customer Name:"/>
+                            <TextField fx:id="customerNameField" prefWidth="200"/>
+                        </HBox>
+                        <HBox spacing="10" alignment="CENTER_RIGHT">
+                            <Label text="Total Amount:"/>
+                            <Label fx:id="totalAmountLabel" text="$0.00" style="-fx-font-weight: bold;"/>
+                        </HBox>
+                    </VBox>
+                    <Button text="Generate Invoice" onAction="#generateInvoice"
+                            style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14;"/>
+                </HBox>
+            </VBox>
+            
+            <!-- Sales History -->
+            <VBox fx:id="salesHistoryPane" visible="false" managed="false" spacing="15" style="-fx-background-color: #f4f4f4; -fx-padding: 20;">
+                <HBox alignment="CENTER_LEFT" spacing="10">
+                    <Label text="Sales History" style="-fx-font-size: 22; -fx-font-weight: bold;"/>
+                    <Pane HBox.hgrow="ALWAYS" />
+                    <DatePicker fx:id="salesStartDate" promptText="Start Date"/>
+                    <DatePicker fx:id="salesEndDate" promptText="End Date"/>
+                    <Button text="Filter" onAction="#filterSales"
+                            style="-fx-background-color: #2196f3; -fx-text-fill: white;"/>
+                </HBox>
+                <TableView fx:id="salesHistoryTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn text="Invoice #" fx:id="salesInvoiceColumn" prefWidth="100"/>
+                        <TableColumn text="Date" fx:id="salesDateColumn" prefWidth="150"/>
+                        <TableColumn text="Customer" fx:id="salesCustomerColumn" prefWidth="150"/>
+                        <TableColumn text="Items" fx:id="salesItemsColumn" prefWidth="80"/>
+                        <TableColumn text="Total" fx:id="salesTotalColumn" prefWidth="100"/>
+                        <TableColumn text="View Details" fx:id="salesDetailsColumn" prefWidth="100"/>
+                    </columns>
+                </TableView>
+                <HBox alignment="CENTER_RIGHT" spacing="15">
+                    <Label text="Total Sales Amount:"/>
+                    <Label fx:id="totalSalesAmountLabel" text="$0.00" style="-fx-font-weight: bold;"/>
+                </HBox>
+            </VBox>
+            
+            <!-- Manage Stock -->
+            <VBox fx:id="manageStockPane" visible="false" managed="false" spacing="15" style="-fx-background-color: #f4f4f4; -fx-padding: 20;">
+                <HBox alignment="CENTER_LEFT" spacing="10">
+                    <Label text="Manage Stock" style="-fx-font-size: 22; -fx-font-weight: bold;"/>
+                    <Pane HBox.hgrow="ALWAYS" />
+                    <ToggleButton fx:id="showLowStockBtn2" text="Show Low Stock" onAction="#toggleLowStockInManage"
+                              style="-fx-background-color: #FF9800; -fx-text-fill: white;"/>
+                </HBox>
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <TextField fx:id="searchStock" promptText="Search products..." prefWidth="250"/>
+                    <Button text="Search" onAction="#searchStock"
+                            style="-fx-background-color: #2196f3; -fx-text-fill: white;"/>
+                </HBox>
+                <TableView fx:id="stockTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn text="ID" fx:id="stockIdColumn" prefWidth="60"/>
+                        <TableColumn text="Product Name" fx:id="stockNameColumn" prefWidth="200"/>
+                        <TableColumn text="Current Stock" fx:id="stockQuantityColumn" prefWidth="120"/>
+                        <TableColumn text="Min Stock" fx:id="stockMinColumn" prefWidth="100"/>
+                        <TableColumn text="Status" fx:id="stockStatusColumn" prefWidth="120"/>
+                        <TableColumn text="Update Stock" fx:id="stockUpdateColumn" prefWidth="120"/>
+                    </columns>
+                </TableView>
+                <Label text="Note: Major stock updates require admin approval" style="-fx-text-fill: #f44336; -fx-font-style: italic;"/>
+            </VBox>
+        </StackPane>
+    </center>
+</BorderPane> 

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.pharmacy.controllers.ReportViewerController"
+      spacing="15" 
+      styleClass="dashboard-content" 
+      style="-fx-padding: 20;">
+      
+    <HBox alignment="CENTER_LEFT" spacing="10">
+        <Button fx:id="backButton" text="← Back to Reports" 
+                style="-fx-background-color: #2196f3; -fx-text-fill: white;"/>
+        <Label text="Report Details" style="-fx-font-size: 22; -fx-font-weight: bold;"/>
+    </HBox>
+    
+    <GridPane hgap="15" vgap="10">
+        <padding>
+            <Insets top="20" right="0" bottom="20" left="0"/>
+        </padding>
+        
+        <Label text="Title:" style="-fx-font-weight: bold;" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <Label fx:id="titleLabel" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+        
+        <Label text="Date:" style="-fx-font-weight: bold;" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <Label fx:id="dateLabel" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+        
+        <Label text="Type:" style="-fx-font-weight: bold;" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <Label fx:id="typeLabel" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+    </GridPane>
+    
+    <Label text="Report Content:" style="-fx-font-weight: bold;"/>
+    <TextArea fx:id="contentArea" editable="false" wrapText="true" prefHeight="400"/>
+    
+    <HBox alignment="CENTER_RIGHT" spacing="10">
+        <Button fx:id="exportPdfButton" text="Export PDF" 
+                style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+        <Button fx:id="exportExcelButton" text="Export Excel" 
+                style="-fx-background-color: #2196f3; -fx-text-fill: white;"/>
+    </HBox>
+</VBox> 

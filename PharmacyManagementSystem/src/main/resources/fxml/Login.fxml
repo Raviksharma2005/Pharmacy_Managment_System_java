@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.shape.Line?>
+
+<BorderPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pharmacy.controllers.LoginController"
+            stylesheets="@../css/dark-theme.css">
+    
+    <center>
+        <!-- Background with pharmacy image -->
+        <StackPane>
+            <!-- Background image -->
+            <ImageView fitWidth="800" fitHeight="500" preserveRatio="false">
+                <image>
+                    <Image url="@../images/pharmacy-bg.png" />
+                </image>
+                <effect>
+                    <javafx.scene.effect.ColorAdjust brightness="-0.2" contrast="0.1" />
+                </effect>
+            </ImageView>
+            
+            <!-- Dark overlay for better readability -->
+            <Rectangle width="800" height="500" fill="#121212" opacity="0.7" />
+            
+            <!-- Login interface -->
+            <BorderPane>
+                <right>
+                    <VBox alignment="CENTER" spacing="30" styleClass="login-container" 
+                          prefWidth="350">
+                        <Label text="Login" styleClass="login-title">
+                            <VBox.margin>
+                                <Insets bottom="30" />
+                            </VBox.margin>
+                        </Label>
+                        
+                        <TextField fx:id="usernameField" promptText="Username" styleClass="text-field">
+                            <VBox.margin>
+                                <Insets bottom="15" />
+                            </VBox.margin>
+                        </TextField>
+                        
+                        <PasswordField fx:id="passwordField" promptText="Password" styleClass="password-field">
+                            <VBox.margin>
+                                <Insets bottom="15" />
+                            </VBox.margin>
+                        </PasswordField>
+                        
+                        <ComboBox fx:id="userRoleCombo" promptText="Select Role" prefWidth="300" styleClass="combo-box">
+                            <VBox.margin>
+                                <Insets bottom="30" />
+                            </VBox.margin>
+                        </ComboBox>
+                        
+                        <Button fx:id="loginButton" text="Login" onAction="#handleLogin" 
+                                styleClass="button"
+                                prefWidth="300" prefHeight="45">
+                            <VBox.margin>
+                                <Insets bottom="20" />
+                            </VBox.margin>
+                        </Button>
+                        
+                        <Label fx:id="errorLabel" style="-fx-text-fill: #ff5252; -fx-font-size: 12;" />
+                        
+                        <Label text="Forgot password? Contact administrator" style="-fx-font-size: 12; -fx-text-fill: #9E9E9E;" />
+                    </VBox>
+                </right>
+                
+                <left>
+                    <VBox alignment="CENTER_LEFT" style="-fx-padding: 40;">
+                        <Label text="PharmaCare" style="-fx-font-size: 42; -fx-text-fill: white; -fx-font-weight: bold; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.8), 10, 0, 0, 0);">
+                            <VBox.margin>
+                                <Insets bottom="10" />
+                            </VBox.margin>
+                        </Label>
+                        <Label text="Management System" style="-fx-font-size: 24; -fx-text-fill: #E0E0E0; -fx-font-family: 'Segoe UI Light'; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.8), 5, 0, 0, 0);" />
+                        
+                        <VBox spacing="15" opacity="0.8">
+                            <padding>
+                                <Insets top="50" />
+                            </padding>
+                            <HBox spacing="10" alignment="CENTER_LEFT">
+                                <Rectangle width="5" height="30" fill="#7986CB" />
+                                <Label text="Streamlined Pharmacy Operations" style="-fx-font-size: 16; -fx-text-fill: white;" />
+                            </HBox>
+                            <HBox spacing="10" alignment="CENTER_LEFT">
+                                <Rectangle width="5" height="30" fill="#7986CB" />
+                                <Label text="Comprehensive Inventory Management" style="-fx-font-size: 16; -fx-text-fill: white;" />
+                            </HBox>
+                            <HBox spacing="10" alignment="CENTER_LEFT">
+                                <Rectangle width="5" height="30" fill="#7986CB" />
+                                <Label text="Secure User Authentication" style="-fx-font-size: 16; -fx-text-fill: white;" />
+                            </HBox>
+                        </VBox>
+                    </VBox>
+                </left>
+            </BorderPane>
+        </StackPane>
+    </center>
+</BorderPane> 
